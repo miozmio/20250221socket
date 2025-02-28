@@ -18,14 +18,21 @@ def find_msg(data):
     return message_list[msgtype][0][0]
 
 def get_data(data, pointer, datatype):
-    if (datatype == 'qint8') | (datatype == 'quint8') | (datatype == 'bool'):
+    if (datatype == 'qint8'):
         return rd_qint8(data, pointer)
-    if (datatype == 'qint16') | (datatype == 'quint16'):
-        return rd_qint16(data, pointer)
-    if (datatype == 'qint32') | (datatype == 'quint32'):
+    if (datatype == 'quint8') | (datatype == 'bool'):
+        return rd_quint8(data, pointer)
+
+    if (datatype == 'qint32'):
         return rd_qint32(data, pointer)
-    if (datatype == 'qint64') | (datatype == 'quint64'):
+    if (datatype == 'quint32'):
+        return rd_quint32(data, pointer)
+
+    if (datatype == 'qint64'):
         return rd_qint64(data, pointer)
+    if (datatype == 'quint64'):
+        return rd_quint64(data, pointer)
+
     if datatype == 'float':
         return rd_floatd(data, pointer)
     if datatype == 'QTime':
